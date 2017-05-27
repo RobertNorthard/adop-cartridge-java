@@ -74,7 +74,7 @@ buildAppJob.with {
         archiveArtifacts("**/*")
         downstreamParameterized {
             trigger(projectFolderName + "/Reference_Application_Unit_Tests") {
-                condition("UNSTABLE_OR_BETTER")
+                condition("SUCCESS")
                 parameters {
                     predefinedProp("B", '${BUILD_NUMBER}')
                     predefinedProp("PARENT_BUILD", '${JOB_NAME}')
@@ -116,7 +116,7 @@ unitTestJob.with {
         archiveArtifacts("**/*")
         downstreamParameterized {
             trigger(projectFolderName + "/Reference_Application_Code_Analysis") {
-                condition("UNSTABLE_OR_BETTER")
+                condition("SUCCESS")
                 parameters {
                     predefinedProp("B", '${B}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
@@ -171,7 +171,7 @@ sonar.scm.enabled=false''')
     publishers {
         downstreamParameterized {
             trigger(projectFolderName + "/Reference_Application_Deploy") {
-                condition("UNSTABLE_OR_BETTER")
+                condition("SUCCESS")
                 parameters {
                     predefinedProp("B", '${B}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
@@ -232,7 +232,7 @@ deployJob.with {
     publishers {
         downstreamParameterized {
             trigger(projectFolderName + "/Reference_Application_Regression_Tests") {
-                condition("UNSTABLE_OR_BETTER")
+                condition("SUCCESS")
                 parameters {
                     predefinedProp("B", '${B}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
@@ -338,7 +338,7 @@ regressionTestJob.with {
     publishers {
         downstreamParameterized {
             trigger(projectFolderName + "/Reference_Application_Performance_Tests") {
-                condition("UNSTABLE_OR_BETTER")
+                condition("SUCCESS")
                 parameters {
                     predefinedProp("B", '${B}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
